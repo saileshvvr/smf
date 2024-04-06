@@ -82,6 +82,8 @@ type SMFContext struct {
 	UEDefaultPathPool   map[string]*UEDefaultPaths
 	LocalSEIDCount      uint64
 
+	Ues *Ues
+
 	// Each pdu session should have a unique charging id
 	ChargingIDGenerator *idgenerator.IDGenerator
 }
@@ -259,7 +261,10 @@ func InitSmfContext(config *factory.Config) {
 
 	smfContext.Locality = configuration.Locality
 
+	smfContext.Ues = InitSmfUeData()
+
 	TeidGenerator = idgenerator.NewGenerator(1, math.MaxUint32)
+
 }
 
 func InitSMFUERouting(routingConfig *factory.RoutingConfig) {
