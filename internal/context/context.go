@@ -262,6 +262,9 @@ func InitSmfContext(config *factory.Config) {
 	smfContext.Locality = configuration.Locality
 
 	smfContext.Ues = InitSmfUeData()
+
+	TeidGenerator = idgenerator.NewGenerator(1, math.MaxUint32)
+
 }
 
 func InitSMFUERouting(routingConfig *factory.RoutingConfig) {
